@@ -38,7 +38,7 @@ using (var client = new SQLiteDbContext())
 // add identity
 builder.Services
     .AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddEntityFrameworkStores<SQLiteDbContext>()
     .AddDefaultTokenProviders();
 
 // config identity
