@@ -14,21 +14,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
-
-
 // add DBcontext
-//string conStr;
-//#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-//conStr = builder.Configuration.GetConnectionString("DefaultMySqlConnection");
-//#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-//builder.Services.AddDbContext<ApplicationDbContext>(option => {
-//    option.UseMySql(conStr, ServerVersion.AutoDetect(conStr))
-//    .LogTo(Console.WriteLine, LogLevel.Information)
-//                .EnableSensitiveDataLogging()
-//                .EnableDetailedErrors();
-//});
-
 builder.Services.AddEntityFrameworkSqlite().AddDbContext<SQLiteDbContext>();
 using (var client = new SQLiteDbContext())
 {
@@ -76,6 +62,8 @@ builder.Services
 
 
 // Configure the HTTP request pipeline.
+var app = builder.Build();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

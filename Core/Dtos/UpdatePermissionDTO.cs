@@ -2,7 +2,7 @@
 
 namespace identityEx.Core.Dtos
 {
-    public class UpdatPermissionDTO
+    public class UpdatePermissionDTO
     {
         [Required(ErrorMessage = "UserName is required")]
         public string UserName { get; set; }
