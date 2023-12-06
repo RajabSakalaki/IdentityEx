@@ -1,4 +1,4 @@
-using identityEx.Core.DBContext;
+using identityEx.Core.DBContexts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +28,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(option => {
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors();
 });
+
+builder.Services.AddEntityFrameworkSqlite().AddDbContext<SQLiteDbContext>();
+using (var client = new SQLiteDbContext())
+{
+    client.Database.EnsureCreated();
+}
 
 // add identity
 builder.Services
