@@ -1,4 +1,5 @@
 using identityEx.Core.DBContexts;
+using identityEx.Core.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -52,7 +53,7 @@ using (var client = new SQLiteDbContext())
 
 // add identity
 builder.Services
-    .AddIdentity<IdentityUser, IdentityRole>()
+    .AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<SQLiteDbContext>()
     .AddDefaultTokenProviders();
 
