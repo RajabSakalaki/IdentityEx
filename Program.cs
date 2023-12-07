@@ -1,5 +1,7 @@
 using identityEx.Core.DBContexts;
 using identityEx.Core.Entities;
+using identityEx.Core.Interfaces;
+using JwtAuthAspNet7WebAPI.Core.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -90,6 +92,9 @@ builder.Services
         };
     });
 
+// Inject app Dependencies (Dependency Injection)
+
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 // Configure the HTTP request pipeline.
 var app = builder.Build();

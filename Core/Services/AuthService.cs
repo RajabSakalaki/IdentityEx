@@ -1,7 +1,8 @@
-﻿using JwtAuthAspNet7WebAPI.Core.Dtos;
-using JwtAuthAspNet7WebAPI.Core.Entities;
-using JwtAuthAspNet7WebAPI.Core.Interfaces;
-using JwtAuthAspNet7WebAPI.Core.OtherObjects;
+﻿
+using identityEx.Core.Dtos;
+using identityEx.Core.Entities;
+using identityEx.Core.Interfaces;
+using identityEx.Core.OtherObjects;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -24,7 +25,7 @@ namespace JwtAuthAspNet7WebAPI.Core.Services
         }
 
 
-        public async Task<AuthServiceResponseDto> LoginAsync(LoginDto loginDto)
+        public async Task<AuthServiceResponseDto> LoginAsync(LoginDTO loginDto)
         {
             var user = await _userManager.FindByNameAsync(loginDto.UserName);
 
@@ -69,7 +70,7 @@ namespace JwtAuthAspNet7WebAPI.Core.Services
             };
         }
 
-        public async Task<AuthServiceResponseDto> MakeAdminAsync(UpdatePermissionDto updatePermissionDto)
+        public async Task<AuthServiceResponseDto> MakeAdminAsync(UpdatePermissionDTO updatePermissionDto)
         {
             var user = await _userManager.FindByNameAsync(updatePermissionDto.UserName);
 
@@ -89,7 +90,7 @@ namespace JwtAuthAspNet7WebAPI.Core.Services
             };
         }
 
-        public async Task<AuthServiceResponseDto> MakeOwnerAsync(UpdatePermissionDto updatePermissionDto)
+        public async Task<AuthServiceResponseDto> MakeOwnerAsync(UpdatePermissionDTO updatePermissionDto)
         {
             var user = await _userManager.FindByNameAsync(updatePermissionDto.UserName);
 
@@ -109,7 +110,7 @@ namespace JwtAuthAspNet7WebAPI.Core.Services
             };
         }
 
-        public async Task<AuthServiceResponseDto> RegisterAsync(RegisterDto registerDto)
+        public async Task<AuthServiceResponseDto> RegisterAsync(RegisterDTO registerDto)
         {
             var isExistsUser = await _userManager.FindByNameAsync(registerDto.UserName);
 
